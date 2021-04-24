@@ -1,11 +1,11 @@
 import time
 from selenium import webdriver
-from RaghavYT_UnitTest.pages.LoginPage import LoginPage
-from RaghavYT_UnitTest.pages.HomePage import HomePage
+from seleniumSwagLabs.pages.LoginPage import LoginPage
+from seleniumSwagLabs.pages.HomePage import HomePage
 import unittest
-from RaghavYT_UnitTest.strings import strings
+from seleniumSwagLabs.strings import strings
 
-class TestLoginAndLogout(unittest.TestCase):
+class TestLoginCases(unittest.TestCase):
 
     driver = None
 
@@ -15,14 +15,22 @@ class TestLoginAndLogout(unittest.TestCase):
         cls.driver.maximize_window()
         cls.driver.get(strings.url)
 
-    def test_login(self):
+    def test_1_login_wrong_credentials(self):
+        driver = self.driver
+        lp = LoginPage(driver)
+        lp.enter_username(strings.standard_username)
+        lp.enter_password("wrong_password")
+        lp.click_submit_btn()
+        lp.close_credentials_error()
+
+    def test_2_login_right_credentials(self):
         driver = self.driver
         lp = LoginPage(driver)
         lp.enter_username(strings.standard_username)
         lp.enter_password(strings.password)
         lp.click_submit_btn()
 
-    def test_logout(self):
+    def test_3_logout(self):
         driver = self.driver
         hp = HomePage(driver)
         hp.logout_from_page()

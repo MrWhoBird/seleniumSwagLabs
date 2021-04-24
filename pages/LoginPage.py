@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from RaghavYT_UnitTest.strings import strings
+from seleniumSwagLabs.strings import strings
 
 class LoginPage():
 
@@ -16,3 +16,6 @@ class LoginPage():
 
     def click_submit_btn(self):
         self.driver.find_element(by=By.ID, value=strings.login_button_id).click()
+
+    def close_credentials_error(self):
+        self.driver.find_element(by=By.CLASS_NAME, value=strings.close_wrong_credentials_error_class).click()
