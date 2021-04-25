@@ -21,10 +21,10 @@ class TestBuyItem(unittest.TestCase):
         lp.enter_username(strings.standard_username)
         lp.enter_password(strings.password)
         lp.click_submit_btn()
-        print("test_login OK")
+        print("login OK")
         hp = HomePage(driver)
         hp.buy_item()
-        print("test_buy_item OK")
+        print("buy_item OK")
 
     @classmethod
     def tearDownClass(cls):
